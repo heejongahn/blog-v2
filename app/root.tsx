@@ -1,14 +1,35 @@
 import {
-  Form,
   Links,
   Meta,
   Scripts,
   ScrollRestoration,
+  Outlet,
+  json,
+  useLoaderData,
 } from "@remix-run/react";
+import appStylesHref from "./app.css?url";
+import sidebarStylesHref from "./sidebar/style.css?url";
+import { LinksFunction } from "@remix-run/node";
+import { Article } from "utils/parseArticle";
+import Sidebar from "./sidebar";
+import { loadArticles } from "loaders/loadArticles";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: appStylesHref },
+  { rel: "stylesheet", href: sidebarStylesHref },
+];
+
+export async function loader() {
+  const articles = await loadArticles();
+
+  return json({ articles });
+}
 
 export default function App() {
+  const { articles } = useLoaderData<{ articles: Article[] }>();
+
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,33 +37,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div id="sidebar">
-          <h1>Remix Contacts</h1>
-          <div>
-            <Form id="search-form" role="search">
-              <input
-                id="q"
-                aria-label="Search contacts"
-                placeholder="Search"
-                type="search"
-                name="q"
-              />
-              <div id="search-spinner" aria-hidden hidden={true} />
-            </Form>
-            <Form method="post">
-              <button type="submit">New</button>
-            </Form>
-          </div>
-          <nav>
-            <ul>
-              <li>
-                <a href={`/contacts/1`}>Your Name</a>
-              </li>
-              <li>
-                <a href={`/contacts/2`}>Your Friend</a>
-              </li>
-            </ul>
-          </nav>
+        <Sidebar articles={articles} />
+        <div id="detail">
+          <Outlet context={{ articles }} />
         </div>
 
         <ScrollRestoration />
