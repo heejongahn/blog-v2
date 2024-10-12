@@ -11,13 +11,16 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@csstools/postcss-global-data": "^3.0.0",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
+    "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
     "isbot": "^4.1.0",
     "match-sorter": "^6.3.1",
     "open-color": "^1.9.1",
+    "postcss-custom-media": "^11.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remark": "^15.0.1",
@@ -45,7 +48,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.38",
     "postcss-nesting": "^12.1.5",
-    "sass": "^1.77.6",
     "typescript": "^5.1.6",
     "vite": "^5.1.4",
     "vite-tsconfig-paths": "^4.3.1"
