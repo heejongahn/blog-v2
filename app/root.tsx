@@ -38,9 +38,9 @@ export default function App() {
       </head>
       <body>
         <Sidebar articles={articles} />
-        <div id="detail">
+        <main id="page-content">
           <Outlet context={{ articles }} />
-        </div>
+        </main>
 
         <ScrollRestoration />
         <Scripts />

@@ -9,14 +9,9 @@ export default defineConfig({
       routes: (defineRoutes) => {
         return defineRoutes((route) => {
           route("/", "page-home/route.tsx", { index: true });
-          // route("", "about/route.tsx");
-          route("articles", "page-articles/index/route.tsx");
-          route("articles/:slug", "page-articles/detail/route.tsx");
-          // , () => {
-          //   route("", "concerts/home.tsx", { index: true });
-          //   route("trending", "concerts/trending.tsx");
-          //   route(":city", "concerts/city.tsx");
-          // });
+          route("/about", "page-about/route.tsx", { index: true });
+          route("/articles", "page-articles/index/route.tsx");
+          route("/articles/:slug", "page-articles/detail/route.tsx");
         });
       },
     }),
