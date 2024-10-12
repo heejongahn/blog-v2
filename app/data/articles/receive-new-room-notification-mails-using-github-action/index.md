@@ -11,7 +11,7 @@ tags:
 
 매일 아침 11시, [피터팬의 좋은방 구하기](https://www.peterpanz.com/)라는 부동산 거래 사이트에 새로 올라온 특정 조건(가격대, 지역 등)을 만족하는 매물을 아래와 같이 정리해서 보내주는 프로그램을 만들었다. ([저장소](https://github.com/heejongahn/tinkerbell-template)) 요새 블로깅이 너무 뜸하기도 했고, 재밌는 작업이라 과정을 기록으로 남겨보았다.
 
-![메일로 부동산 매물을 받아보는 스크린샷](/public/assets/tinkerbell-result.png)
+![메일로 부동산 매물을 받아보는 스크린샷](/assets/tinkerbell-result.png)
 
 2019-11-12 수정: [양성민](https://ysm.sh/) 님께서 [GitHub Action의 타임존 관련 수정이 필요한 부분](https://twitter.com/ysm0622_/status/1194173951678668805)을 알려주셔서 수정했습니다. 감사합니다!
 
@@ -51,11 +51,11 @@ tags:
 
 요구사항을 만족시키는 안으로 도커 + `cron`을 이용하는 방법과 일렉트론을 이용해 데스크탑 앱을 만드는 방법 두 가지 정도가 떠올랐다. (둘 다 익숙한 도구는 아니지만 금방 배울 수 있을거라 생각했다) 바로 작업에 들어가기 전에 더 좋은 방법이 없을지 아는 개발자들이 있는 톡방에 여쭤보았다.
 
-![더 나은 방법이 없을지 물어보는 스크린샷](/public/assets/tinkerbell-question.jpg)
+![더 나은 방법이 없을지 물어보는 스크린샷](/assets/tinkerbell-question.jpg)
 
 이후로 대화를 나누며 요구사항을 좀 더 명확히 정리하던 중 한 분께서 GitHub Action을 사용하면 어떻겠냐는 제안을 주셨다.
 
-![GitHub Action 사용을 제안받는 스크린샷](/public/assets/tinkerbell-answer.jpg)
+![GitHub Action 사용을 제안받는 스크린샷](/assets/tinkerbell-answer.jpg)
 
 처음 들었을 때는 “이미 본 방의 목록”이라는 상태를 로컬에 저장할 계획이었어서 어려울 것이라 생각했다. 하지만 API 응답을 다시 보니 매물이 올라온 시간을 내려주고 있었다. “어제 이후로 올라온 방” 을 매일 받아볼 수단이 있으면 **원했던 목적을 달성할 수 있을 뿐더러 내가 생각한 안보다 훨씬 간단하고 나은 해결책 같았다**.
 
@@ -545,7 +545,7 @@ jobs:
 
 설정 파일 시행착오로 인한 몇 차례의 `git add -A; git commit —amend; git push -f`를 거친 후, 원하는 대로 새로운 매물 정보를 담은 리포트가 메일로 날아오는 것을 확인했다.
 
-![메일로 부동산 매물을 받아보는 스크린샷](/public/assets/tinkerbell-result.png)
+![메일로 부동산 매물을 받아보는 스크린샷](/assets/tinkerbell-result.png)
 
 **만세!**
 

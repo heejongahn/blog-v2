@@ -6,7 +6,7 @@ tags:
   - 에세이
 ---
 
-![결혼 사진](/public/assets/bitter-day-sweet-home/photo.jpg "결혼 사진")
+![결혼 사진](/assets/bitter-day-sweet-home/photo.jpg "결혼 사진")
 
 저는 가끔, 아니 가끔보단 조금 더 자주, 내가 한심합니다.
 

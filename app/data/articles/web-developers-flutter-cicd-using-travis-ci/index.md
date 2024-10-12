@@ -24,7 +24,7 @@ tags:
 
 그래서 자동화했다.
 
-![모든 자동화가 완료된 시점의 스크린샷](/public/assets/flutter_cicd_endgame.png)
+![모든 자동화가 완료된 시점의 스크린샷](/assets/flutter_cicd_endgame.png)
 
 위 스크린샷은 GitHub 푸시에 의해 CI 머신에서 Android, iOS 빌드가 각각 트리거되어 TestFlight / Google Play 내부 테스트 트랙까지 올라가는 설정을 처음으로 성공했을 때 (마음 속으로) 감격의 눈물을 흘리며 찍은 화면이다.
 
@@ -58,7 +58,7 @@ tags:
 
 가장 먼저, 빌드가 돌아가야 할 시점, 이 글의 경우 GitHub 저장소로의 코드 푸시를 감지하는 것부터 시작해보자. [Travis CI의 GitHub Marketplace 페이지](https://github.com/marketplace/travis-ci)에서 리포지토리에 Travis CI를 붙일 수 있다. 오픈 소스 프로젝트의 경우 무료 플랜을 사용 가능하다.
 
-![GitHub Travis CI 어플리케이션 추가 화면 스크린샷](/public/assets/flutter_cicd_travis.png)
+![GitHub Travis CI 어플리케이션 추가 화면 스크린샷](/assets/flutter_cicd_travis.png)
 
 Open Source 플랜을 선택하고 `Install it for free` 버튼을 눌러 원하는 저장소에 Travis CI 어플리케이션을 설치할 수 있다. 설치된 어플리케이션은 GitHub 저장소의 메뉴바 “Settings” 를 클릭한 뒤 좌측 “Integrations & services” 에서 확인할 수 있다.
 
@@ -187,7 +187,7 @@ end
 
 이미 TestFlight에 수동으로 업로드 한 적이 있다는 전제 하에, `flutter build ios` 커맨드를 실행한 뒤 `ios` 폴더에서 `bundle exec fastlane beta` 커맨드를 실행하면 (CLI 프롬프트를 통한 Apple 계정 비밀번호 입력 이후) TestFlight에 빌드가 업로드된다.
 
-![로컬에서 fastlane을 사용한 iOS 배포에 성공한 경우의 스크린샷](/public/assets/flutter_cicd_local_fastlane_ios.png)
+![로컬에서 fastlane을 사용한 iOS 배포에 성공한 경우의 스크린샷](/assets/flutter_cicd_local_fastlane_ios.png)
 
 위처럼 들뜨는 메시지를 만났다면 성공이다. TestFlight에 들어가보면 실제로 업로드 된 번들을 확인할 수 있을 것이다. 총 걸린 시간이 7분 가량이라 7분을 아껴줬다고 이야기하는 것 같은데 말이 되는 계산인지는 모르겠다.
 
@@ -197,7 +197,7 @@ end
 
 [Flutter의 공식 iOS 배포 가이드](https://flutter.dev/docs/deployment/ios) 를 따라왔다면 아마 이 시점에서 코드 사이닝을 위한 인증서는 Xcode가 자동으로 관리하는 상태일 것이다. (아래 그림과 같이 Xcode `Runner` 타겟의 “General > Signing > Automatically manage signing” 체크박스가 체크되어 있는 상태)
 
-![빌드 설정의 Automatically manage signing 옵션이 켜져있는 Xcode 화면](/public/assets/flutter_cicd_xcode_autosign_on.png)
+![빌드 설정의 Automatically manage signing 옵션이 켜져있는 Xcode 화면](/assets/flutter_cicd_xcode_autosign_on.png)
 
 iOS 앱을 TestFlight와 App Store에 배포하기 위해서는 배포 인증서(distribution certificate)를 사용한 코드 사이닝이 필요한다. 위 설정이 켜져있는 경우, 이 동작은 Xcode가 알아서 처리해준다. (iOS 코드 사이닝의 큰 그림에 대해선 [이 미디엄 글](https://medium.com/ios-os-x-development/ios-code-signing-provisioning-in-a-nutshell-d5b247760bef)이 잘 설명하고 있다)
 
@@ -258,7 +258,7 @@ username("Apple ID 이메일")
 
 다음으로, Xcode가 직접 관리하는 인증서 대신 match가 설치한 인증서를 바라보도록 설정해줘야 한다. Xcode를 켜서 `Runner` 타겟의 “General > Signing > Automatically manage signing” 체크박스를 해제한다. 그 뒤, 각 환경의 “Signing Provisioning Profile” 에서 match 가 설치한 적절한 프로파일을 설정해준다.
 
-![빌드 설정의 Automatically manage signing 옵션이 꺼져있는 Xcode 화면](/public/assets/flutter_cicd_xcode_autosign_off.png)
+![빌드 설정의 Automatically manage signing 옵션이 꺼져있는 Xcode 화면](/assets/flutter_cicd_xcode_autosign_off.png)
 
 > 위 스크린샷에서 사실 Debug용 프로파일은 별도로 존재해야 맞다. 글 작성 시점에서 아직까지 TestFlight 출시 없이 직접 기기에 설치할 일이 없어 따로 설정을 해두지 않았다. 시뮬레이터에서 개발하기에는 위 설정으로 충분하지만, 개발 프로파일 설치가 필요하다면 `bundle exec fastlane match development`를 실행한 뒤 “Signing (Debug)” 의 프로파일을 알맞게 변경해주면 될 것이다.
 
@@ -291,7 +291,7 @@ match를 사용해서 생성한 인증서에 Travis CI가 접근하기 위해선
 
 > **NOTE: 이 때 생성한 GitHub 토큰은 절대 외부에 평문으로 노출되어선 안 된다!**
 
-![GitHub 토큰을 생성하는 페이지 스크린샷](/public/assets/flutter_cicd_github_token.png)
+![GitHub 토큰을 생성하는 페이지 스크린샷](/assets/flutter_cicd_github_token.png)
 
 토큰 값을 얻어왔으면 Travis CI 저장소 설정에 `GITHUB_TOKEN` 환경 변수를 추가하고, `.travis.yml`의 `before_script`에 아래 스크립트를 추가한다.
 
@@ -326,7 +326,7 @@ upload_to_testflight(
 
 `apple_id` 인자로 넘겨야 할 값은 아래 그림과 같이 App Store Connect의 “App Information” (또는 URL path) 에서 확인할 수 있다. 숫자가 아닌 문자열이라는 점에 유의하자.
 
-![App Information 페이지에서 Apple ID를 찾는 방법을 설명하는 스크린샷](/public/assets/flutter_cicd_app_information.png)
+![App Information 페이지에서 Apple ID를 찾는 방법을 설명하는 스크린샷](/assets/flutter_cicd_app_information.png)
 
 ## 🍎 Pitfall: dsym 버그
 
@@ -336,7 +336,7 @@ upload_to_testflight(
 
 이슈에 링크된 StackOverflow 답변처럼 Xcode의 `Runner` 타겟의 “Build Settings > Debug Information Format” 설정을 `DWARF`로, “Enable Bitcode” 설정을 `No`로 설정한 후에 `ios/Runner.xcodeproj/project.pbxproj` 파일을 저장하고 다시 시도해보면 해결된 것을 확인할 수 있다.
 
-![디버그 옵션이 글에서 설명한 대로 설정된 Xcode](/public/assets/flutter_cicd_xcode_debug_option.png)
+![디버그 옵션이 글에서 설명한 대로 설정된 Xcode](/assets/flutter_cicd_xcode_debug_option.png)
 
 ## 🍎 Pitfall: Travis CI macOS Sierra 코드 사이닝 버그
 
@@ -472,7 +472,7 @@ matrix:
 
 fastlane을 이용해 Android 앱을 배포하기 위해선 [Google 서비스 계정](https://cloud.google.com/iam/docs/service-accounts)이 필요하다. [공식 문서](https://docs.fastlane.tools/getting-started/android/setup/#setting-up-supply)에 나와있는 대로, 새로운 서비스 계정은 Play Console에서 발급받을 수 있다. Play Console의 좌측 드로어의 "모든 어플리케이션”을 클릭한 뒤, "설정" 내의 "개발자 계정 > API 액세스” 메뉴에 들어가 하단의 "서비스 계정 만들기"를 클릭한 뒤, 안내 모달의 "Google API 콘솔" 링크를 클릭한다. (왜 이런 식으로 만들었는지는 모르겠다)
 
-![Google 서비스 계정 생성을 위한 절차를 설명하는 스크린샷](/public/assets/flutter_cicd_google_service_account.png)
+![Google 서비스 계정 생성을 위한 절차를 설명하는 스크린샷](/assets/flutter_cicd_google_service_account.png)
 
 안내대로 Google API 콘솔로 들어가면 서비스 계정을 만들 수 있다. 생성시 **JSON 타입의 키를 선택하고, 해당 JSON 파일을 내려받아 `android/app/serviceAccount.json` 경로에 저장하자**. 다시 Play Console로 돌아오면 방금 생성한 서비스 계정이 목록에 나타날 것이다. 파란색 “액세스 권한 부여” 버튼을 눌러 “제품 출시 관리자” 권한을 주면 모든 준비가 끝난다.
 
@@ -544,7 +544,7 @@ end
 
 이제 로컬에서 fastlane을 사용해 배포할 준비가 끝났다. 먼저 `flutter build appbundle --build-number=<빌드 번호>` 커맨드를 실행해 App Bundle을 만든다. 그 이후 `android` 폴더에서 `bundle exec fastlane beta` 커맨드를 실행하면 만들어진 App Bundle이 Google Play의 내부 테스트 트랙으로 배포되는 것을 확인할 수 있다.
 
-![로컬에서 fastlane을 사용한 Android 배포에 성공한 경우의 스크린샷](/public/assets/flutter_cicd_local_fastlane_android.png)
+![로컬에서 fastlane을 사용한 Android 배포에 성공한 경우의 스크린샷](/assets/flutter_cicd_local_fastlane_android.png)
 
 > NOTE: 테스트 과정에서는 지금까지의 빌드 번호보다는 크되 최대한 작은 빌드 번호를 사용할 것을 권장한다. 이유는 글 하단의 “부록: 버저닝 전략” 부분 참고.
 

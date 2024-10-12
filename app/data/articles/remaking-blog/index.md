@@ -51,7 +51,7 @@ tags:
 
 #### 스타일을 걷어낸 페이지의 모습
 
-![스타일을 걷어낸 페이지의 모습](/public/assets/remaking_blog_without_style.png)
+![스타일을 걷어낸 페이지의 모습](/assets/remaking_blog_without_style.png)
 
 ### 스타일링 추가
 
@@ -59,21 +59,21 @@ tags:
 
 #### 글 목록 페이지 비포/애프터
 
-![글 목록 페이지에 스타일을 입히기 시작](/public/assets/remaking_blog_basic_style.png)
+![글 목록 페이지에 스타일을 입히기 시작](/assets/remaking_blog_basic_style.png)
 
-![글 목록 페이지에 스타일을 입힌 모습](/public/assets/remaking_blog_basic_style_2.png)
+![글 목록 페이지에 스타일을 입힌 모습](/assets/remaking_blog_basic_style_2.png)
 
 #### 글 본문 페이지 비포/애프터
 
-![스타일을 입히기 전의 글 본문 페이지](/public/assets/remaking_blog_post_before_style.png)
+![스타일을 입히기 전의 글 본문 페이지](/assets/remaking_blog_post_before_style.png)
 
-![스타일을 입힌 후의 본문 페이지](/public/assets/remaking_blog_post_after_style.png)
+![스타일을 입힌 후의 본문 페이지](/assets/remaking_blog_post_after_style.png)
 
 #### 소개 페이지 비포/애프터
 
-![처음에 임시로 넣어둔 소개 페이지](/public/assets/remaking_blog_about_before.png)
+![처음에 임시로 넣어둔 소개 페이지](/assets/remaking_blog_about_before.png)
 
-![기존 사이트를 참고해 새로 만든 소개 페이지](/public/assets/remaking_blog_about_after.png)
+![기존 사이트를 참고해 새로 만든 소개 페이지](/assets/remaking_blog_about_after.png)
 
 모든 컴포넌트 구현이 끝난 후엔 다시 한 번 페이지를 보며 자잘한 스타일 버그를 잡고 더 깔끔해 보이도록 가다듬는 작업을 진행했다.
 
@@ -144,7 +144,7 @@ netlify-cms는 리소스에 엮인 URL path를 직접 지정하는 방법을 제
 
 얼마 전 매주 글을 한 편씩 쓰기로 다짐하고 공표했다. 그러려면 당연히 일정 시간을 글쓰기에 할당해야 할 것 같아 지난 주부터 1시간 일찍 출근해서 블로그를 만들었다. 하루를 일찍 시작하니 상쾌했고, 늦게 퇴근하거나 놀거나 하는 이유로 아무것도 안 하고 넘어가는 일이 없어 좋았다.
 
-![즐거움에 관한 ‘재수의 연습장’ 계정의 그림 (출처 https://twitter.com/jessoosketch/status/1046783353523855360)](/public/assets/remaking_blog_fun.jpg)
+![즐거움에 관한 ‘재수의 연습장’ 계정의 그림 (출처 https://twitter.com/jessoosketch/status/1046783353523855360)](/assets/remaking_blog_fun.jpg)
 
 얼마 전, 위 그림과 글이 담긴 연습장 사진을 인상깊게 보았다. ([원 출처 트윗](https://twitter.com/jessoosketch/status/1046783353523855360)) 새로운 기술로 생산적인 일을 하는 재미가 있으니 확실히 유튜브에 낭비하는 시간이 줄어들었다. 일찍 출근해서 글쓰기나 블로그 개선에 시간과 즐거움을 쓰는 습관은 계속 가져가려 한다.
 
