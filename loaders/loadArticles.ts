@@ -1,23 +1,11 @@
-import { readdir } from "fs/promises";
-import { parseArticle } from "utils/parseArticle";
-import { getArticleFilePath, getArticlesRootPath } from "utils/paths";
+import { readFile } from "fs/promises";
+import { Article } from "utils/parseArticle";
+import path from "path";
 
 export async function loadArticles() {
-  const articleNames = await readdir(getArticlesRootPath());
-
-  const articles = await Promise.all(
-    articleNames.map(async (articleName) => {
-      const articlePath = getArticleFilePath(articleName);
-      return {
-        ...(await parseArticle(`${articlePath}/index.md`)),
-        slug: articleName,
-      };
-    })
-  );
-
-  articles.sort((a, b) => {
-    return a.frontmatter.date > b.frontmatter.date ? -1 : 1;
-  });
+  const articles = JSON.parse(
+    (await readFile(path.join(process.cwd(), "articles-index.json"))).toString()
+  ) as Article[];
 
   return articles;
 }

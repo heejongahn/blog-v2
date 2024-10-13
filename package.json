@@ -4,10 +4,11 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "build": "npm run compile && remix vite:build",
+    "dev": "npm run compile && remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "netlify serve",
+    "compile": "node scripts/collect-articles.js",
     "typecheck": "tsc"
   },
   "dependencies": {
