@@ -34,10 +34,12 @@
     justify-content: space-between;
     color: var(--text-color-gray);
     font-size: 0.8rem;
+    gap: 8px;
   }
 
   .article-date {
     font-family: monospace;
+    flex-shrink: 0;
   }
 
   .article-content {

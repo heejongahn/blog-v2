@@ -1,4 +1,6 @@
 .content {
+  max-width: 100%;
+
   word-break: keep-all;
   overflow-wrap: break-word;
   line-height: 1.6;
@@ -24,5 +26,25 @@
     &:not(:last-child) {
       margin-bottom: 1rem;
     }
+  }
+
+  pre,
+  code {
+    font-size: 1rem;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  :not(pre) > code,
+  pre {
+    background-color: #fdf6e3;
+  }
+
+  :not(pre) > code {
+    padding: 2px;
+  }
+
+  pre {
+    padding: 4px;
   }
 }
