@@ -2,34 +2,25 @@ import { json, useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import { useLayoutEffect, useRef } from "react";
 
-import { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { Article } from "utils/parseArticle";
 
 import articleStylesHref from "./article.css?url";
 import { prettifyDate } from "utils/date";
 import { loadArticles } from "loaders/loadArticles";
-import { getFormattedPageTitle } from "utils/getFormattedPageTitle";
 import { useSticky } from "hooks/useSticky";
 import { PageLayout } from "~/components/PageLayout";
 import ArticleContent from "~/components/ArticleContent";
+import { generateMeta } from "utils/generateMeta";
 
-export const meta: MetaFunction = ({ data }) => {
+export const meta = generateMeta(({ data }) => {
   const { article } = data as { article: Article };
 
-  const title = getFormattedPageTitle([article.frontmatter.title]);
-
-  return [
-    { title },
-    {
-      property: "og:title",
-      content: title,
-    },
-    {
-      name: "description",
-      content: article.frontmatter.description,
-    },
-  ];
-};
+  return {
+    title: article.frontmatter.title,
+    description: article.frontmatter.description,
+  };
+});
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: articleStylesHref },

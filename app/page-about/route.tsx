@@ -1,22 +1,13 @@
-import { LinksFunction, MetaFunction } from "@remix-run/node";
+import { LinksFunction } from "@remix-run/node";
 
 import aboutStylesHref from "./about.css?url";
-import { getFormattedPageTitle } from "utils/getFormattedPageTitle";
 import { PageLayout } from "~/components/PageLayout";
+import { generateMeta } from "utils/generateMeta";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: getFormattedPageTitle(["소개"]) },
-    {
-      property: "og:title",
-      content: getFormattedPageTitle(["소개"]),
-    },
-    {
-      name: "description",
-      content: "사색송어 소개",
-    },
-  ];
-};
+export const meta = generateMeta(() => ({
+  title: "소개",
+  description: "사색송어 소개",
+}));
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: aboutStylesHref },

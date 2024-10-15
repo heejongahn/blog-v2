@@ -1,4 +1,4 @@
-import { LoaderFunction, LinksFunction, MetaFunction } from "@remix-run/node";
+import { LoaderFunction, LinksFunction } from "@remix-run/node";
 import { NavLink, json, useLoaderData } from "@remix-run/react";
 import { loadArticles } from "loaders/loadArticles";
 import { parseDate, prettifyDate } from "utils/date";
@@ -6,28 +6,16 @@ import { Article } from "utils/parseArticle";
 
 import articlesStylesHref from "./articles.css?url";
 import { HTMLAttributes } from "react";
-import { getFormattedPageTitle } from "utils/getFormattedPageTitle";
 import { PageLayout } from "~/components/PageLayout";
+import { generateMeta } from "utils/generateMeta";
 
 export const handle = {
   breadcrumb: { route: "/", name: "홈" },
 };
 
-export const meta: MetaFunction = () => {
-  const title = getFormattedPageTitle(["전체 글"]);
-
-  return [
-    { title },
-    {
-      property: "og:title",
-      content: title,
-    },
-    {
-      name: "description",
-      content: "안희종 개인 홈페이지",
-    },
-  ];
-};
+export const meta = generateMeta(() => ({
+  title: "전체 글",
+}));
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: articlesStylesHref },

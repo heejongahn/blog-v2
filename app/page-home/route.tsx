@@ -1,4 +1,4 @@
-import { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { NavLink, json, useLoaderData } from "@remix-run/react";
 import { loadArticles } from "loaders/loadArticles";
 import { prettifyDate } from "utils/date";
@@ -8,20 +8,9 @@ import homeStylesHref from "./home.css?url";
 import { PageLayout } from "~/components/PageLayout";
 import { useLayoutEffect, useRef } from "react";
 import ArticleContent from "~/components/ArticleContent";
+import { generateMeta } from "utils/generateMeta";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "사색송어" },
-    {
-      property: "og:title",
-      content: "사색송어",
-    },
-    {
-      name: "description",
-      content: "안희종 개인 홈페이지",
-    },
-  ];
-};
+export const meta = generateMeta(() => ({}));
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: homeStylesHref },
