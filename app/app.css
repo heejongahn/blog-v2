@@ -1,5 +1,6 @@
 /* @import "~normalize.css"; */
 @import "open-color/open-color.css";
+@import "prismjs/themes/prism-solarizedlight.css";
 
 html {
   --font-family: "Eulyoo", "MaruBuri", "Pretendard Variable",
@@ -165,13 +166,21 @@ body {
 
 #page-content {
   height: 100%;
+  width: 100%;
   flex: 1 1 auto;
 }
 
 blockquote {
+  margin: 1rem;
   padding: 0.5rem;
   background: var(--oc-gray-1);
   border: 1px dashed var(--divider-color);
+
+  @media (--mobile) {
+    & {
+      margin: 0.5rem;
+    }
+  }
 }
 
 @font-face {
