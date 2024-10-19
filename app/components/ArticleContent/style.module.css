@@ -47,4 +47,9 @@
   pre {
     padding: 4px;
   }
+
+  iframe,
+  video {
+    width: 100%;
+  }
 }

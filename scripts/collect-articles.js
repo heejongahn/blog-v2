@@ -5,7 +5,8 @@ import { matter } from "vfile-matter";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkParse from "remark-parse";
 import remarkHtml from "remark-html";
-import remarkStringify from "remark-stringify";
+import remarkPrism from "remark-prism";
+import remarkGfm from "remark-gfm";
 import { unified } from "unified";
 import fs from "fs/promises";
 
@@ -21,11 +22,14 @@ export async function parseArticle(articlePath) {
   const fileContent = await fs.readFile(articlePath);
 
   const file = await unified()
-    .use(remarkParse)
-    .use(remarkStringify)
+    .use(remarkParse, { commonmark: true })
+    .use(remarkGfm)
+    .use(remarkPrism)
     .use(remarkFrontmatter)
     .use(parseFrontmatter)
-    .use(remarkHtml)
+    .use(remarkHtml, {
+      sanitize: false,
+    })
     .process(fileContent);
 
   return {
