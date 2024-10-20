@@ -35,8 +35,6 @@ export const loader: LoaderFunction = async function loader({ request }) {
   const hasPrev = page > 0;
   const hasNext = page < totalPages - 1;
 
-  console.log({ page, articlesForPage });
-
   return json({ articles: articlesForPage, page, hasPrev, hasNext });
 };
 
