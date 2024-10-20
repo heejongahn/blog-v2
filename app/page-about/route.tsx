@@ -3,6 +3,7 @@ import { LinksFunction } from "@remix-run/node";
 import aboutStylesHref from "./about.css?url";
 import { PageLayout } from "~/components/PageLayout";
 import { generateMeta } from "utils/generateMeta";
+import { NavLink } from "@remix-run/react";
 
 export const meta = generateMeta(() => ({
   title: "소개",
@@ -29,7 +30,14 @@ export default function ArticlePage() {
           </h1>
           <div className="about-section-content">
             사색송어는 안희종의 개인 홈페이지입니다. 이름은 어슐러 르 귄의
-            『머나먼 바닷가』 속 한 구절에서 따왔습니다.
+            <a
+              href="https://product.kyobobook.co.kr/detail/S000001277248"
+              target="_blank"
+              rel="noreferrer"
+            >
+              『머나먼 바닷가』
+            </a>{" "}
+            속 한 구절에서 따왔습니다.
             <blockquote>
               아렌, 중대한 결정을 내려야 할 때에 섣부르게 택하지 말도록 해라.
               어렸을 때 나는 존재하는 삶과 행위하는 삶 사이에서 선택을 해야
@@ -41,12 +49,16 @@ export default function ArticlePage() {
               자신이 대체 누굴까를 궁금해할 기회를 가질 수 없는 거다.
             </blockquote>
             처음 읽은 후로 이 구절이 시간이 지날수록 점점 가슴 속에 깊게
-            자리잡았습니다. 결국 홈페이지 이름으로까지 짓게 되었습니다.
+            자리잡았습니다. 메모에 남겨둔 구절을 몇 달마다 한 번씩 꺼내
+            읽었습니다. “ahn.heejong”이라는, 이름 아닌 이름 뿐이던 홈페이지에
+            제대로 된 이름을 붙여주고 싶다는 생각이 들었을 때 자연스레
+            떠올랐습니다.
             <br />
             <br />
-            송어가 파리를 물듯 행위하는 삶 사이, 그저 존재하며 자신이 대체
-            누굴까를 궁금해할 시간을 가질 수 있는 사람이고 싶습니다. 글을
-            쓰다보면 조금은 더 그럴 수 있는 것 같습니다.
+            송어가 파리를 물듯 행위하다 보면 끝나있는 하루가 쌓여갑니다. 그 사이
+            사이 가만히 존재하고 느끼는, 자신이 대체 누굴까를 궁금해할 시간을
+            잃지 않는 사람이고 싶습니다. 글을 쓰다보면 조금은 더 그럴 수 있는 것
+            같아 글을 씁니다.
           </div>
         </section>
         <section className="about-section about-site">
@@ -54,19 +66,44 @@ export default function ArticlePage() {
             <strong>안희종</strong>은⋯
           </h1>
           <div className="about-section-content">
-            <a href="https://flex.team" target="_blank" rel="noreferrer">
-              플렉스팀
-            </a>
-            에서 프로덕트 매니저로 일합니다. 배우자와 두 고양이와 함께 살고
-            있습니다. 책, 음악, 영화, 게임을 가리지 않고 좋아합니다. 아름다운
+            <NavLink to="/articles/the-last-job">플렉스팀</NavLink>
+            에서 일합니다. 전산학과를 거쳐 소프트웨어 엔지니어로 커리어를
+            시작했습니다. 점차 바뀌어가는 관심사에 따라 지금은{" "}
+            <NavLink to="/articles/transition-to-product-manager">
+              프로덕트 매니저 역할
+            </NavLink>
+            을 맡고 있습니다.
+            <br />
+            <br />
+            <NavLink to="/articles/bitter-day-sweet-home">
+              배우자와 두 고양이와 함께 삽니다.
+            </NavLink>{" "}
+            책, 음악, 영화, 게임 등 창작물을 가리지 않고 좋아합니다. 아름다운
             것에 반하는 이들에게 반합니다.
             <br />
             <br />
-            요즈음은, 내가 과연 언젠가 예술을 만들고 사람들에게 무언가를 느끼게
-            하는 삶을 살 수 있을지 궁금해하고 있습니다.
-            <br />
-            <br />
-            내가 누구인지 소개한다는 게 참 쉬워야 하는 것 같은데 쉽지 않네요.
+            요즈음은 이런 질문들을 갖고 살아요.
+            <ul className="about-questions">
+              <li className="about-question">
+                나도 언젠가 예술을 만들고 사람들에게 무언가 느끼게 하는 삶을 살
+                수 있을까?
+              </li>
+              <li className="about-question">
+                <NavLink to="/articles/what-will-you-worship">
+                  나는 무엇을 섬기는 삶을 살고 싶은가?
+                </NavLink>
+              </li>
+              <li className="about-question">
+                <NavLink to="/articles/stairway-and-field">
+                  나는 오르고 싶은가, 헤메고 싶은가?
+                </NavLink>
+              </li>
+              <li className="about-question">
+                <NavLink to="/articles/will-financial-freedom-make-you-free">
+                  무엇이 사람을 진정 자유롭게 만드는 걸까?
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </section>
       </PageLayout.Inner>

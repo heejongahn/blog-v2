@@ -44,4 +44,28 @@
 
   .about-section-content {
   }
+
+  .about-questions {
+    padding-left: 1rem;
+    margin: 1rem 0;
+
+    .about-question {
+      list-style-type: none;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        font-size: 1.5rem;
+
+        content: "»";
+        left: -1rem;
+        top: -3px;
+        line-height: 1;
+      }
+
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+    }
+  }
 }
