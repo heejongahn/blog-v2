@@ -6,7 +6,7 @@ import { Article } from "utils/parseArticle";
 import classNames from "classnames";
 import homeStylesHref from "./home.css?url";
 import { PageLayout } from "~/components/PageLayout";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import ArticleContent from "~/components/ArticleContent";
 import { generateMeta } from "utils/generateMeta";
 
@@ -48,9 +48,9 @@ export default function Index() {
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  const resetScroll = () => {
     scrollContainerRef.current?.scrollTo(0, 0);
-  }, [page]);
+  };
 
   return (
     <PageLayout id="home" ref={scrollContainerRef}>
@@ -63,10 +63,14 @@ export default function Index() {
         {hasNext || hasPrev ? (
           <div className="page-navigation">
             {hasPrev ? (
-              <NavLink to={`/?page=${page - 1}`}>이전 페이지</NavLink>
+              <NavLink to={`/?page=${page - 1}`} onClick={resetScroll}>
+                이전 페이지
+              </NavLink>
             ) : null}
             {hasNext ? (
-              <NavLink to={`/?page=${page + 1}`}>다음 페이지</NavLink>
+              <NavLink to={`/?page=${page + 1}`} onClick={resetScroll}>
+                다음 페이지
+              </NavLink>
             ) : null}
           </div>
         ) : null}

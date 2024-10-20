@@ -43,6 +43,15 @@
   }
 
   .about-section-content {
+    p {
+      &:not(:first-child) {
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  .about-quote {
+    margin: 2em 0;
   }
 
   .about-questions {
@@ -67,5 +76,11 @@
         margin-top: 0.5rem;
       }
     }
+  }
+
+  .about-last-updated {
+    color: var(--text-color-gray);
+    font-size: 0.75rem;
+    font-style: italic;
   }
 }

@@ -16,8 +16,10 @@ export const generateMeta = (callback: Callback): MetaFunction => {
   const image = `${HOST}/images/logo/logo.png`;
 
   return (args) => {
-    const { title: rawTitle, description = "안희종 개인 홈페이지" } =
-      callback(args);
+    const {
+      title: rawTitle,
+      description = "사색송어는 안희종의 개인 홈페이지입니다.",
+    } = callback(args);
 
     const title = getFormattedPageTitle(rawTitle == null ? [] : [rawTitle]);
 

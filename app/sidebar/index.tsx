@@ -99,7 +99,7 @@ export default function Sidebar({ articles }: Props) {
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupTitle>링크</SidebarGroupTitle>
-          <SidebarGroupItemList className="sidebar-group-item-list-mobile-row">
+          <SidebarGroupItemList>
             <SidebarGroupItem
               to="mailto:heejongahn@gmail.com"
               target="_blank"
