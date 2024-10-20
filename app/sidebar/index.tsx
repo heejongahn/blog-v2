@@ -11,6 +11,7 @@ interface Props {
 const favotieSlugs = [
   "bitter-day-sweet-home",
   "stairway-and-field",
+  "30days-run",
   "on-climbing-sandhill",
 ];
 
@@ -47,6 +48,12 @@ export default function Sidebar({ articles }: Props) {
           <NavLink to="/about" className="sidebar-about-link">
             누구세요?
           </NavLink>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupTitle>아카이브</SidebarGroupTitle>
+          <SidebarGroupItemList className="sidebar-group-item-list-mobile-row ">
+            <SidebarGroupItem to="/articles">전체</SidebarGroupItem>
+          </SidebarGroupItemList>
         </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupTitle>최근 글</SidebarGroupTitle>
@@ -91,12 +98,6 @@ export default function Sidebar({ articles }: Props) {
           </SidebarGroupItemList>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupTitle>아카이브</SidebarGroupTitle>
-          <SidebarGroupItemList className="sidebar-group-item-list-mobile-row ">
-            <SidebarGroupItem to="/articles">전체</SidebarGroupItem>
-          </SidebarGroupItemList>
-        </SidebarGroup>
-        <SidebarGroup>
           <SidebarGroupTitle>링크</SidebarGroupTitle>
           <SidebarGroupItemList className="sidebar-group-item-list-mobile-row">
             <SidebarGroupItem
@@ -126,6 +127,13 @@ export default function Sidebar({ articles }: Props) {
               rel="noreferrer"
             >
               GitHub
+            </SidebarGroupItem>
+            <SidebarGroupItem
+              to="https://www.linkedin.com/in/heejongahn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
             </SidebarGroupItem>
           </SidebarGroupItemList>
         </SidebarGroup>
